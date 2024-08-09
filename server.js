@@ -5,7 +5,7 @@
 *  (including 3rd party web sites) or distributed to other students.
 * 
 *  Name: Padmapriya PalaniSwamiNathan Student ID: 140193237 Date: 07-AUG-2024
-*  Vercel : https://assignment5-mocha.vercel.app/students
+*  Vercel : https://assignment6-amber-mu.vercel.app/
 *
 ********************************************************************************/ 
 const HTTP_PORT = process.env.PORT || 8080;
@@ -197,11 +197,11 @@ app.post('/students/add', (req, res) => {
 app.get('/students/add', (req, res) => {
     collegeData.getCourses().then((data) => {
         // Render the addStudent view with the courses data
-        res.render("addStudent", { courses: data });// Renders addstudent.hbs view
+        res.render("addstudent", { courses: data });// Renders addstudent.hbs view
     }).catch((err) => {
         console.error('Error fetching courses:', err);
         // Render the addStudent view with an empty array for courses
-        res.render("addStudent", { courses: [] });
+        res.render("addstudent", { courses: [] });
     });
 });
 
