@@ -1,13 +1,17 @@
-/*********************************************************************************
-*  WEB700 – Assignment 06
-*  I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  No part 
-*  of this assignment has been copied manually or electronically from any other source 
-*  (including 3rd party web sites) or distributed to other students.
-* 
-*  Name: Padmapriya PalaniSwamiNathan Student ID: 140193237 Date: 07-AUG-2024
-*  Vercel : https://assignment6-amber-mu.vercel.app/
+/******************************************************************************** 
+*  WEB700 – Assignment 06 
 *
+*	I declare that this assignment is my own work in accordance with Seneca's *  Academic Integrity Policy: 
+*  
+*	https://www.senecacollege.ca/about/policies/academic-integrity-policy.html 
+*  
+*	Name: Padmapriya PalaniSwamiNathan Student ID: 140193237 Date: 07-AUG-2024 
+* 
+*	Published URL:Vercel : https://assignment6-amber-mu.vercel.app/
+*   Github: https://github.com/Padmapriyappsn/Assignment6
+* 
 ********************************************************************************/ 
+
 const HTTP_PORT = process.env.PORT || 8080;
 const express = require("express");
 const app = express();
