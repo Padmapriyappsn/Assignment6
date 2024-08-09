@@ -41,7 +41,16 @@ var Course = sequelize.define('Course', {
 });
 
 // Define a relationship between Students and Courses
-Course.hasMany(Student, { foreignKey: 'course' });
+//Course.hasMany(Student, { foreignKey: 'course' });
+Course.hasMany(Student, {
+    foreignKey: 'course',
+    onDelete: 'SET NULL',  // or 'RESTRICT'
+  });
+
+Student.belongsTo(Course, {
+    foreignKey: 'course',
+    onDelete: 'SET NULL',  // or 'RESTRICT'
+  });
 
 module.exports.initialize = function () {
     return new Promise(function (resolve, reject) {
@@ -139,26 +148,6 @@ module.exports.addStudent = function (studentData) {
     });
 };
 
-// Update student data
-/*module.exports.updateStudent = function (studentData) {
-    studentData.TA = (studentData.TA) ? true : false;
-
-    for (const prop in studentData) {
-        if (studentData[prop] === "") {
-            studentData[prop] = null;
-        }
-    }
-
-    return new Promise(function (resolve, reject) {
-        Student.update(studentData, {
-            where: { studentNum: studentData.studentNum }
-        }).then(() => {
-            resolve();
-        }).catch((err) => {
-            reject("unable to update student");
-        });
-    });
-};*/
 
 module.exports.updateStudent = function (studentData) {
     studentData.TA = (studentData.TA) ? true : false;
@@ -235,7 +224,7 @@ module.exports.updateCourse = function (courseData) {
 };
 
 // Delete course by ID
-module.exports.deleteCourseById = function (id) {
+/*module.exports.deleteCourseById = function (id) {
     return new Promise(function (resolve, reject) {
         Course.destroy({
             where: { courseId: id }
@@ -245,7 +234,25 @@ module.exports.deleteCourseById = function (id) {
             reject("unable to delete course");
         });
     });
-};
+};*/
+
+module.exports.deleteCourseById = (id) => {
+    return new Promise((resolve, reject) => {
+      Course.destroy({
+        where: { courseId: id }
+      })
+      .then((rowsDeleted) => {
+        if (rowsDeleted > 0) {
+          resolve(`Course with ID ${id} was successfully deleted.`);
+        } else {
+          reject(`No course found with ID ${id}.`);
+        }
+      })
+      .catch((error) => {
+        reject(`Failed to delete course with ID ${id}. Error: ${error.message}`);
+      });
+    });
+  };
 
 // New function to delete student by number
 module.exports.deleteStudentByNum = function (studentNum) {
