@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-danger {
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                <h2>Students
+                    <a href="/students/add" class="btn btn-success float-right">Add New Student</a> 
+                </h2>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Student Num</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Status</th>
+                                <th>Course ID</th>
+                                <th class="text-right"></th> <!-- Header for the Remove column -->
+                                </tr>
+                        </thead>
+                    <tbody>
+					{{#if students.length}}
+					{{#each students}}
+                                    <tr>
+                                        <td>{{studentNum}}</td>
+                                        <td class="underline"><a href="/student/{{studentNum}}">{{firstName}} {{lastName}}</a></td>
+                                        <td class="underline"><a href="mailto:{{email}}">{{email}}</a></td>
+                                        <td>{{addressStreet}} {{addressCity}} {{addressProvince}}</td>
+                                        <td>{{status}}</td>
+                                        <td class="underline"><a href="/students?course={{courseID}}">{{course}}</a></td>
+                                        <td class="text-right">
+                                            <a href="/student/delete/{{studentNum}}" class="btn btn-danger">Remove</a>
+                                        </td>
+                                    </tr>
+                        {{/each}}
+                    {{else}}
+					    <tr>
+                            <td colspan="7" class="text-center"><strong>{{message}}</strong></td>
+                        </tr>
+                    {{/if}}    
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Optional for table responsiveness) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
