@@ -3,7 +3,6 @@ var sequelize = new Sequelize('SenecaDB', 'SenecaDB_owner', 'o4qptfdThlH6', {
     //host: 'ep-nameless-leaf-a58tw4n6.us-east-2.aws.neon.tech',
     host: 'ep-nameless-leaf-a58tw4n6-pooler.us-east-2.aws.neon.tech',
     dialect: 'postgres',
-    dialectModule: 'pg',
     port: 5432,
     dialectOptions: {
         ssl: { rejectUnauthorized: false }
