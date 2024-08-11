@@ -24,7 +24,6 @@ const exphbs = require('express-handlebars');
 module.exports = app;
 
 // Middleware routes to serve static files
-app.use(express.static(path.join(__dirname, 'data')));  // Serve static files from the 'data' folder
 app.use(express.static(path.join(__dirname, 'views'))); // Serve static files from the 'views' folder
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' folder
 
