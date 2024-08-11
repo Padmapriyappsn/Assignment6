@@ -1,7 +1,7 @@
 <main class="col-md-12"> 
     <form method="POST" action="/courses/add" onsubmit="return validateForm()">
         <fieldset>
-            <legend>Course Information</legend>
+            <legend>Personal Information</legend>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -18,7 +18,11 @@
             </div>
         </fieldset>
         <hr />
-        <input type="submit" class="btn btn-primary float-right" value="Add Course" /><br /><br /><br />
+        <div class="float-right">
+            <input type="reset" class="btn btn-secondary" value="Reset Form" />
+            <input type="submit" class="btn btn-primary" value="Add Course" />
+        </div>
+        <br /><br /><br />
     </form>
 </main>
 
